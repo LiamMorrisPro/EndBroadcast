@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://yu80i1vy0gf"]
+
+[ext_resource type="Material" uid="uid://cvkih88b5hknl" path="res://materials/roboTest/roboBody.tres" id="1_1swb7"]
+[ext_resource type="Script" uid="uid://cnutq702u88ce" path="res://objects/laser_gun.gd" id="1_o16rx"]
+[ext_resource type="Material" uid="uid://bhovlg52isiey" path="res://materials/roboTest/roboGlow.tres" id="2_o16rx"]
+[ext_resource type="PackedScene" uid="uid://bu4cvyxhq5hg1" path="res://objects/laser.tscn" id="3_r5ka3"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o81e4"]
+height = 0.12
+radial_segments = 16
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_uiso1"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.12
+radial_segments = 16
+
+[node name="LaserGun" type="Node3D"]
+script = ExtResource("1_o16rx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.045, 0, 0, 0, -1.3310118e-07, -3.045, 0, 3.045, -1.3310118e-07, 0, 0, 0)
+mesh = SubResource("CylinderMesh_o81e4")
+surface_material_override/0 = ExtResource("1_1swb7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(3.045, 0, 0, 0, -1.3310118e-07, -3.045, 0, 3.045, -1.3310118e-07, 0, -2.2571964e-09, 0.051638633)
+mesh = SubResource("CylinderMesh_uiso1")
+surface_material_override/0 = ExtResource("2_o16rx")
+
+[node name="Laser" parent="." instance=ExtResource("3_r5ka3")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 4.5880775e-09, 1.3520577)
+collision_mask = 257
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

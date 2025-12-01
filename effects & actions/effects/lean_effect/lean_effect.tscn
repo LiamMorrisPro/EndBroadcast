@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c170xt6bt3qcv"]
+
+[ext_resource type="Script" uid="uid://de6wsvg0y3jf6" path="res://effects & actions/effects/lean_effect/lean_effect.gd" id="1_xdbty"]
+
+[node name="lean_effect" type="Node3D" node_paths=PackedStringArray("target_body", "mesh_root")]
+script = ExtResource("1_xdbty")
+target_body = NodePath("")
+mesh_root = NodePath("")

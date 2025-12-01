@@ -1,0 +1,80 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjiqojiedxk8"]
+
+[ext_resource type="Script" uid="uid://cejumwatwq3yb" path="res://effects & actions/effects/fog_of_war/fog_of_war.gd" id="1_xog5l"]
+[ext_resource type="Shader" uid="uid://cksp8du76gbug" path="res://shaders/blur.gdshader" id="2_mtb56"]
+[ext_resource type="Material" uid="uid://djfjox2qx8g0b" path="res://effects & actions/effects/fog_of_war/fogMeshMat.tres" id="3_8qkb7"]
+[ext_resource type="Script" uid="uid://clih8urtabafa" path="res://effects & actions/effects/fog_of_war/vision_fov.gd" id="3_vkpas"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_nsicy"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kbf5i"]
+resource_local_to_scene = true
+shader = ExtResource("2_mtb56")
+shader_parameter/strength = 10.0
+shader_parameter/sample_power = 4
+shader_parameter/vision_mask = SubResource("ViewportTexture_nsicy")
+shader_parameter/screen_size = Vector2(1920, 1080)
+shader_parameter/fog_strength = 0.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xx5av"]
+height = 4.5527344
+radius = 40.0
+
+[node name="FogOfWar" type="Node3D" groups=["FogOfWar"]]
+script = ExtResource("1_xog5l")
+FOV = 120.0
+FOV_Range = 30.0
+Center_Range = 30.0
+
+[node name="SubViewport" type="SubViewport" parent="."]
+msaa_3d = 2
+use_taa = true
+size = Vector2i(1920, 1080)
+
+[node name="ViewportCamera" type="Camera3D" parent="SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 36.070057, 29.52666)
+cull_mask = 16
+fov = 45.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_kbf5i")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.4745098)
+metadata/_edit_use_anchors_ = true
+
+[node name="FogMesh" type="Node3D" parent="."]
+
+[node name="vision_fov" type="MeshInstance3D" parent="FogMesh"]
+layers = 16
+material_override = ExtResource("3_8qkb7")
+cast_shadow = 0
+script = ExtResource("3_vkpas")
+vision_radius = 40.0
+
+[node name="vision_center" type="MeshInstance3D" parent="FogMesh"]
+layers = 16
+material_override = ExtResource("3_8qkb7")
+cast_shadow = 0
+script = ExtResource("3_vkpas")
+vision_radius = 30.0
+vision_fov = 360
+number_of_rays = 720
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 512
+collision_mask = 512
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2763672, 0)
+shape = SubResource("CylinderShape3D_xx5av")
+
+[connection signal="body_entered" from="Area3D" to="." method="_unit_detect_area_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_unit_detect_area_exited"]

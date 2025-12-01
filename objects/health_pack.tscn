@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://cr32amd20nyxw"]
+
+[ext_resource type="Material" uid="uid://cvkih88b5hknl" path="res://materials/roboTest/roboBody.tres" id="1_njnkl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e3xlm"]
+transparency = 1
+albedo_color = Color(0, 0.8708729, 0.44171134, 0.16100001)
+emission_enabled = true
+emission = Color(2.3102762e-06, 0.9970153, 0.2442899, 1)
+emission_energy_multiplier = 14.47
+
+[sub_resource type="BoxMesh" id="BoxMesh_mvjm3"]
+material = SubResource("StandardMaterial3D_e3xlm")
+size = Vector3(0.735, 0.74, 0.14)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6fj8d"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cy4n0"]
+material = ExtResource("1_njnkl")
+height = 0.105
+
+[node name="HealthPack" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6785067, 0)
+mesh = SubResource("BoxMesh_mvjm3")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.51066196, 0)
+shape = SubResource("BoxShape3D_6fj8d")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05069767, 0)
+mesh = SubResource("CylinderMesh_cy4n0")

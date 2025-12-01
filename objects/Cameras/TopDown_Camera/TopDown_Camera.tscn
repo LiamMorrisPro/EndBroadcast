@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://datgpcgpu33hs"]
+
+[ext_resource type="Script" uid="uid://dwx4nuj7rcdsu" path="res://objects/Cameras/TopDown_Camera/Camera.gd" id="1_ssbj7"]
+
+[node name="Camera_Pivot" type="Node3D" node_paths=PackedStringArray("targetNode")]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0, 0)
+script = ExtResource("1_ssbj7")
+targetNode = NodePath("")
+
+[node name="Camera3D" type="Camera3D" parent="." groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.945)
+cull_mask = 1048559
+doppler_tracking = 2
+fov = 45.0

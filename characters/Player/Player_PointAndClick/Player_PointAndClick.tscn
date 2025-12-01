@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://bh8r51jso7uyt"]
+
+[ext_resource type="Texture2D" uid="uid://up5pda8g0f6t" path="res://_imports/icons/Cursor-2.png" id="1_a7f2f"]
+[ext_resource type="Script" uid="uid://rw1rulcsbfm3" path="res://effects & actions/Movement/first_person_move.gd" id="1_x01sf"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_jtw0f"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_x01sf"]
+
+[node name="PlayerPointAndClick" type="CharacterBody3D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(20, 20)
+texture = ExtResource("1_a7f2f")
+
+[node name="Actions" type="Node3D" parent="."]
+
+[node name="FirstPersonMove" type="Node3D" parent="Actions" node_paths=PackedStringArray("TargetBody", "TargetHead", "camera")]
+script = ExtResource("1_x01sf")
+TargetBody = NodePath("../..")
+TargetHead = NodePath("../../Head")
+camera = NodePath("../../Head/Camera3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_jtw0f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_x01sf")
+
+[node name="Head" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3358746, 0)

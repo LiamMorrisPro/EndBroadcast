@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://wi1rxlnwkag5"]
+
+[ext_resource type="Texture2D" uid="uid://ck0pmrhb23iyi" path="res://_imports/tilesMetal.png" id="1_tdk5q"]
+
+[resource]
+render_priority = 1
+albedo_color = Color(0.30791348, 0.36457416, 0.5236159, 1)
+albedo_texture = ExtResource("1_tdk5q")
+uv1_scale = Vector3(0.105, 0.105, 0.105)
+uv1_triplanar = true
+uv1_world_triplanar = true

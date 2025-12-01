@@ -1,0 +1,161 @@
+[gd_scene load_steps=21 format=3 uid="uid://bu4cvyxhq5hg1"]
+
+[ext_resource type="Script" uid="uid://bxq2knvox88be" path="res://scripts/Laser.gd" id="1_jrugt"]
+[ext_resource type="Material" uid="uid://d3td3dsihtyyj" path="res://materials/Laser/LaserRed.tres" id="2_e6e0a"]
+[ext_resource type="Material" uid="uid://d4i144qh6dv6i" path="res://materials/Laser/LaserWhite.tres" id="3_y6tf8"]
+
+[sub_resource type="Curve" id="Curve_cqqu4"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 0.010626793), 0.0, 0.0, 0, 0, Vector2(0.69999, 1.2), 1.4003556, 1.4003556, 0, 0, Vector2(0.90000004, 0.8), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Curve" id="Curve_e6e0a"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.25, 0.84999996), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(0.75, 0.84999996), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 5
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="Curve" id="Curve_o2hse"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.008767247), -3.1182988, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3xrv4"]
+top_radius = 0.4
+bottom_radius = 0.4
+height = 1.0
+radial_segments = 40
+rings = 0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_y6tf8"]
+top_radius = 0.2
+bottom_radius = 0.2
+height = 1.0
+radial_segments = 40
+rings = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_fhx8q"]
+material = ExtResource("2_e6e0a")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_cqqu4"]
+material = ExtResource("3_y6tf8")
+
+[sub_resource type="Curve" id="Curve_fhx8q"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.97386765, 0), -3.456507, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cqqu4"]
+curve = SubResource("Curve_fhx8q")
+
+[sub_resource type="Curve" id="Curve_y6tf8"]
+_data = [Vector2(0, 0.49615633), 0.0, 0.0, 0, 0, Vector2(0.25261325, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_fhx8q"]
+curve = SubResource("Curve_y6tf8")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_e6e0a"]
+direction = Vector3(1, 4.18, 0)
+spread = 80.0
+initial_velocity_min = 20.0
+initial_velocity_max = 20.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_fhx8q")
+alpha_curve = SubResource("CurveTexture_cqqu4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6tf8"]
+render_priority = -2
+transparency = 1
+depth_draw_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.8480897, 0, 0.3575448, 1)
+emission_enabled = true
+emission = Color(0.82778823, 0, 0.34806398, 1)
+billboard_mode = 1
+stencil_flags = 2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_fhx8q"]
+material = SubResource("StandardMaterial3D_y6tf8")
+size = Vector2(0.3, 0.3)
+orientation = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_e6e0a"]
+material = ExtResource("2_e6e0a")
+radius = 0.6
+height = 1.2
+
+[sub_resource type="SphereMesh" id="SphereMesh_y6tf8"]
+material = ExtResource("3_y6tf8")
+radius = 0.3
+height = 0.6
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fhx8q"]
+radius = 3.7294922
+height = 7.4589844
+
+[node name="Laser" type="RayCast3D"]
+target_position = Vector3(0, -100, 0)
+collision_mask = 7
+script = ExtResource("1_jrugt")
+opening_curve = SubResource("Curve_cqqu4")
+curve = SubResource("Curve_e6e0a")
+closing_curve = SubResource("Curve_o2hse")
+duration = 0.265
+
+[node name="Beam_Root" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.742278e-08, 0, -8.742278e-08, -1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beam_Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_3xrv4")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("2_e6e0a")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Beam_Root"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_y6tf8")
+skeleton = NodePath("../..")
+surface_material_override/0 = ExtResource("3_y6tf8")
+
+[node name="Bulb_Root" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Bulb_Root"]
+mesh = SubResource("SphereMesh_fhx8q")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Bulb_Root"]
+mesh = SubResource("SphereMesh_cqqu4")
+skeleton = NodePath("../..")
+
+[node name="End_Root" type="Node3D" parent="."]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="End_Root"]
+amount = 25
+lifetime = 0.1
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_e6e0a")
+draw_pass_1 = SubResource("PlaneMesh_fhx8q")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="End_Root"]
+mesh = SubResource("SphereMesh_e6e0a")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="End_Root"]
+mesh = SubResource("SphereMesh_y6tf8")
+skeleton = NodePath("../..")
+
+[node name="DamageArea" type="Area3D" parent="End_Root"]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="End_Root/DamageArea"]
+transform = Transform3D(1, 0, 0, 0, -4.3711196e-08, 0.9999968, 0, -0.9999968, -4.3711196e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_fhx8q")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="body_entered" from="End_Root/DamageArea" to="." method="_on_damage_area_body_entered"]
+[connection signal="body_exited" from="End_Root/DamageArea" to="." method="_on_damage_area_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

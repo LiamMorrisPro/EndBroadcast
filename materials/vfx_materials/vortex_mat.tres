@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://g55xx760y072"]
+
+[ext_resource type="Shader" uid="uid://csu1chawbr6ne" path="res://shaders/vfx_shaders/vortex.tres" id="1_r6x1u"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_r6x1u")

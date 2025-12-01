@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://drqqjwcgk80f7"]
+
+[ext_resource type="Script" uid="uid://bs61anmy5vofk" path="res://objects/damage_area.gd" id="1_pk5mp"]
+
+[node name="DamageArea" type="Area3D"]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.9999996, 0, 0, 0, 0.9999996, 0, 0, 0)
+monitoring = false
+script = ExtResource("1_pk5mp")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

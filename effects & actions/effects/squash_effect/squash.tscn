@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cw6vfj6jgl3yv"]
+
+[ext_resource type="Script" uid="uid://dswdpjmsssld1" path="res://effects & actions/effects/squash_effect/squash.gd" id="1_hwg4q"]
+[ext_resource type="Curve" uid="uid://bu8qh1nn5riyh" path="res://effects & actions/effects/squash_effect/squash_curves/squash_curve_up.tres" id="2_3iojy"]
+[ext_resource type="Curve" uid="uid://bhtbx30e1r7pw" path="res://effects & actions/effects/squash_effect/squash_curves/squash_curve_down.tres" id="3_nwmpd"]
+
+[node name="Squash" type="Node3D" node_paths=PackedStringArray("target_mesh_root")]
+script = ExtResource("1_hwg4q")
+squash_curve_up = ExtResource("2_3iojy")
+squash_curve_down = ExtResource("3_nwmpd")
+target_mesh_root = NodePath("")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

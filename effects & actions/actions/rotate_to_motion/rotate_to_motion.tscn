@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bm38pkiho28oi"]
+
+[ext_resource type="Script" uid="uid://b3stnl4ys02ho" path="res://effects & actions/actions/rotate_to_motion/rotate_to_motion.gd" id="1_hqysx"]
+
+[node name="rotate_to_motion" type="Node3D"]
+script = ExtResource("1_hqysx")

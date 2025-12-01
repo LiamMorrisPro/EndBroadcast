@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://x67j81jjwmm7"]
+
+[ext_resource type="Script" uid="uid://dr4o0n1x4sqx3" path="res://objects/Bullet/friendly_bullet/bullet.gd" id="1_i7xg2"]
+[ext_resource type="Material" uid="uid://kdu2ihsuivgk" path="res://materials/Bullets/Enemy_Bullet_Mat.tres" id="2_6xirt"]
+[ext_resource type="PackedScene" uid="uid://drqqjwcgk80f7" path="res://objects/damage_area.tscn" id="3_i6nb6"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_3208k"]
+radius = 0.691
+height = 1.382
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i7xg2"]
+emission_enabled = true
+emission = Color(0.9107034, 0.5021593, 0.24724424, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i7xg2"]
+radius = 0.744
+height = 1.488
+
+[node name="EnemyBullet" type="Node3D"]
+top_level = true
+script = ExtResource("1_i7xg2")
+speed = 15.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_3208k")
+surface_material_override/0 = ExtResource("2_6xirt")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.665, 0, 0, 0, -2.9068074e-08, -0.665, 0, 0.665, -2.9068074e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_3208k")
+surface_material_override/0 = SubResource("StandardMaterial3D_i7xg2")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 24.113
+
+[node name="DamageArea" parent="." instance=ExtResource("3_i6nb6")]
+collision_mask = 257
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, -4.3711257e-08, 0.9999978, 0, -0.9999978, -4.3711257e-08, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_i7xg2")

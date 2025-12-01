@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://cib0kfsh6jo8"]
+
+[ext_resource type="Material" uid="uid://wi1rxlnwkag5" path="res://materials/grid.tres" id="1_16b5m"]
+[ext_resource type="PackedScene" uid="uid://bh8r51jso7uyt" path="res://characters/Player/Player_PointAndClick/Player_PointAndClick.tscn" id="2_xy7e1"]
+[ext_resource type="PackedScene" uid="uid://dtj1boqxlpidv" path="res://characters/Cards/PrototypeCardCharacter.tscn" id="3_4ubyo"]
+[ext_resource type="PackedScene" uid="uid://bu4cvyxhq5hg1" path="res://objects/laser.tscn" id="4_ikjiq"]
+
+[sub_resource type="Environment" id="Environment_xy7e1"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+
+[node name="PointAndClick" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_xy7e1")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.526941, 0.84990185, 0, -0.84990185, 0.526941, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -150.75226, 0)
+material_override = ExtResource("1_16b5m")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(100, 301.50635, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -47.115273, -127.010925, -47.46413)
+material_override = ExtResource("1_16b5m")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(67.685425, 292.14453, 29.32788)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.450905, -124.5578, -37.09319)
+material_override = ExtResource("1_16b5m")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(67.685425, 287.23828, 29.32788)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.655735, -113.61615, -46.358997)
+material_override = ExtResource("1_16b5m")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(67.685425, 265.35498, 10.796265)
+
+[node name="PlayerPointAndClick" parent="." instance=ExtResource("2_xy7e1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.533173, 0.00093078613, 1.1585674)
+
+[node name="PrototypeCardCharacter" parent="." instance=ExtResource("3_4ubyo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.37751, 0.11234558, -10.585566)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406534, 0)
+size = Vector3(0.7, 4.022832, 0.7)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -3.915401)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406534, 0)
+size = Vector3(0.7, 4.022832, 0.7)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.299395)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406534, 0)
+size = Vector3(0.7, 4.022832, 0.7)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -13.794133)
+use_collision = true
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="CSGBox3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.3406534, 0)
+size = Vector3(0.7, 4.022832, 0.7)
+
+[node name="Laser" parent="." instance=ExtResource("4_ikjiq")]
+transform = Transform3D(0.99632293, 0.08567776, 0, -0.08567776, 0.99632293, 0, 0, 0, 1, 16.526882, 4.8634253, -7.0540924)
+
+[node name="Laser2" parent="." instance=ExtResource("4_ikjiq")]
+transform = Transform3D(0.54896444, 0.8358457, 0, -0.8358457, 0.54896444, 0, 0, 0, 1, 5.1600866, 5.8409014, -8.362901)
+
+[node name="Laser3" parent="." instance=ExtResource("4_ikjiq")]
+transform = Transform3D(0.04658339, 0.82819605, -0.5584991, -0.9989145, 0.038622107, -0.026045054, 0, 0.55910593, 0.8290962, 7.533503, 1.4150826, -8.712267)

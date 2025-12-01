@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://msdx3n5vliug"]
+
+[ext_resource type="Material" uid="uid://wi1rxlnwkag5" path="res://materials/grid.tres" id="1_foyur"]
+[ext_resource type="PackedScene" uid="uid://js282n2rnfmv" path="res://characters/Player_TopDown/Player_TopDown.tscn" id="2_6k0dg"]
+[ext_resource type="Script" uid="uid://dwx4nuj7rcdsu" path="res://objects/Camera.gd" id="3_6k0dg"]
+
+[sub_resource type="Environment" id="Environment_6k0dg"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="top_down" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6k0dg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.526941, 0.84990185, 0, -0.84990185, 0.526941, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24957275, 0)
+material_override = ExtResource("1_foyur")
+use_collision = true
+size = Vector3(100, 0.501, 100)
+
+[node name="Character" parent="." instance=ExtResource("2_6k0dg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077394485, 0, -0.15494204)
+
+[node name="Camera_Pivot" type="Node3D" parent="." node_paths=PackedStringArray("targetNode")]
+transform = Transform3D(1, 0, 0, 0, 0.8260982, 0.56352603, 0, -0.56352603, 0.8260982, 0, 0.865, 0)
+script = ExtResource("3_6k0dg")
+targetNode = NodePath("../Character")
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Pivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 22.015)
+doppler_tracking = 2
+fov = 45.0

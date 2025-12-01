@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://38xtkib65wg3"
+path="res://.godot/imported/Heavy Swing C.wav-aba3e0c247ff79a2eb450a42d11ad77f.sample"
+
+[deps]
+
+source_file="res://sounds/whoosh/Heavy Swing C.wav"
+dest_files=["res://.godot/imported/Heavy Swing C.wav-aba3e0c247ff79a2eb450a42d11ad77f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

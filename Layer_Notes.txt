@@ -1,0 +1,13 @@
+
+
+Some notes on the physics layers
+layer 1- level geometry and colliders
+layer 2- player
+layer 3- enemies
+layer 4- invisible barriers
+layer 5 -layer for floor (used in rotate_to_mouse component)
+layer 9 -for player passthrough projectiles
+layer 10 -for enemy detect in fog of war
+
+Some notes on the visual layers
+layer 5- for fog of war effect, not rendered by main camera

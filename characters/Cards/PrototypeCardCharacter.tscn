@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://dtj1boqxlpidv"]
+
+[ext_resource type="Texture2D" uid="uid://du4jhqtj5fbsf" path="res://_imports/GaryStandIn.png" id="1_wbe3g"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hbcrt"]
+orientation = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cf1uj"]
+transparency = 1
+albedo_texture = ExtResource("1_wbe3g")
+billboard_mode = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dnuih"]
+
+[node name="PrototypeCardCharacter" type="CharacterBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88856995, 4.371139e-08)
+mesh = SubResource("PlaneMesh_hbcrt")
+surface_material_override/0 = SubResource("StandardMaterial3D_cf1uj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_dnuih")

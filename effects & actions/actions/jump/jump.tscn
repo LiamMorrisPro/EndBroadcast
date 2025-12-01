@@ -1,0 +1,103 @@
+[gd_scene load_steps=14 format=3 uid="uid://vg65q5sxo1p"]
+
+[ext_resource type="Script" uid="uid://dmsyevckorfvp" path="res://effects & actions/actions/jump/jump.gd" id="1_ssip5"]
+[ext_resource type="AudioStream" uid="uid://cu3fpr4ikkm2x" path="res://sounds/whoosh/Interact Item A.wav" id="2_6nlg7"]
+[ext_resource type="AudioStream" uid="uid://bdeorveum8gkm" path="res://sounds/knock/Hit D.wav" id="3_rejrj"]
+
+[sub_resource type="Curve" id="Curve_kb6td"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.29943505, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bhedf"]
+curve = SubResource("Curve_kb6td")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6leg4"]
+particle_flag_align_y = true
+emission_shape = 3
+emission_box_extents = Vector3(0.5, -0.03, 0.5)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+alpha_curve = SubResource("CurveTexture_bhedf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nwbm8"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_bhedf"]
+material = SubResource("StandardMaterial3D_nwbm8")
+size = Vector2(0.265, 0.44)
+orientation = 2
+
+[sub_resource type="Curve" id="Curve_jqln0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.8276836, 0), -2.7188447, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ero6j"]
+curve = SubResource("Curve_jqln0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_llqyh"]
+lifetime_randomness = 0.3
+direction = Vector3(0, 1, 0)
+spread = 49.688
+initial_velocity_max = 2.0
+angular_velocity_min = -77.140015
+angular_velocity_max = 66.11998
+gravity = Vector3(0, -3, 0)
+alpha_curve = SubResource("CurveTexture_ero6j")
+collision_mode = 1
+collision_friction = 0.0
+collision_bounce = 1.0
+collision_use_scale = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jqln0"]
+transparency = 1
+no_depth_test = true
+shading_mode = 0
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ero6j"]
+material = SubResource("StandardMaterial3D_jqln0")
+size = Vector2(0.1, 0.1)
+orientation = 2
+
+[node name="JumpEffect" type="Node3D"]
+script = ExtResource("1_ssip5")
+
+[node name="jump_particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4293673, 0.0059119463)
+emitting = false
+amount = 5
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.92
+process_material = SubResource("ParticleProcessMaterial_6leg4")
+draw_pass_1 = SubResource("PlaneMesh_bhedf")
+
+[node name="jump_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_6nlg7")
+
+[node name="landing_particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06029904, 0)
+cast_shadow = 0
+emitting = false
+amount = 5
+amount_ratio = 0.972
+one_shot = true
+explosiveness = 1.0
+collision_base_size = 0.05
+process_material = SubResource("ParticleProcessMaterial_llqyh")
+draw_pass_1 = SubResource("PlaneMesh_ero6j")
+
+[node name="land_sound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_rejrj")
+volume_db = -5.0

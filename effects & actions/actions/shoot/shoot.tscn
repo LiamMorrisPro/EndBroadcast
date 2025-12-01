@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6kh6mgnbgl6"]
+
+[ext_resource type="Script" uid="uid://c4s51caur2nmd" path="res://effects & actions/actions/shoot/shoot.gd" id="1_pu1k5"]
+
+[node name="Shoot" type="Node3D"]
+script = ExtResource("1_pu1k5")
+
+[node name="Fire_Rate" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="Reload" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Fire_Rate" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="Reload" to="." method="_on_reload_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc1l1dr1oamaa"]
+
+[ext_resource type="Theme" uid="uid://dpe8b54q7igw" path="res://UI/styles/ButtonStyle/MenuTheme.tres" id="1_jdxuo"]
+[ext_resource type="Script" uid="uid://dd6ba64dll5yd" path="res://UI/reactive_button.gd" id="2_3b770"]
+[ext_resource type="AudioStream" uid="uid://c0asjhf5ctabi" path="res://sounds/Buttons/Pick Button B.wav" id="3_jdxuo"]
+
+[node name="Button" type="Button"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 43.0
+offset_top = -259.0
+offset_right = 517.0
+offset_bottom = -155.00018
+grow_vertical = 0
+focus_mode = 0
+theme = ExtResource("1_jdxuo")
+theme_override_font_sizes/font_size = 56
+text = "Start"
+script = ExtResource("2_3b770")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_jdxuo")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

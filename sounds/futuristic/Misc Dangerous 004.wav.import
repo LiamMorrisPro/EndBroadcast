@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dmxdd1cerus3l"
+path="res://.godot/imported/Misc Dangerous 004.wav-507fe166ac918b2856d6dc711c1dce99.sample"
+
+[deps]
+
+source_file="res://sounds/futuristic/Misc Dangerous 004.wav"
+dest_files=["res://.godot/imported/Misc Dangerous 004.wav-507fe166ac918b2856d6dc711c1dce99.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

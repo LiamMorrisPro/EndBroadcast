@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://msdx3n5vliug"]
+
+[ext_resource type="Material" uid="uid://wi1rxlnwkag5" path="res://materials/grid.tres" id="1_foyur"]
+[ext_resource type="PackedScene" uid="uid://js282n2rnfmv" path="res://characters/Player_TopDown/Player_TopDown.tscn" id="2_6k0dg"]
+[ext_resource type="Script" uid="uid://dwx4nuj7rcdsu" path="res://objects/Camera.gd" id="3_6k0dg"]
+[ext_resource type="PackedScene" uid="uid://c371rr7fk82v6" path="res://characters/Enemy_TopDown/Enemy_TopDown.tscn" id="4_5j64k"]
+[ext_resource type="PackedScene" uid="uid://bjiqojiedxk8" path="res://effects & actions/effects/fog_of_war/fog_of_war.tscn" id="6_7ag2b"]
+
+[sub_resource type="Environment" id="Environment_6k0dg"]
+background_mode = 1
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+glow_normalized = true
+
+[node name="top_down" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6k0dg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.526941, 0.84990185, 0, -0.84990185, 0.526941, 0, 0, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.24957275, 0)
+material_override = ExtResource("1_foyur")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(100, 0.501, 100)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -68.11801, 4.6324406, 0)
+material_override = ExtResource("1_foyur")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(39.791138, 10.265026, 100)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.630947, 4.6324406, 0)
+material_override = ExtResource("1_foyur")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(39.791138, 10.265026, 100)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.48322678, 4.6324406, -19.802547)
+material_override = ExtResource("1_foyur")
+use_collision = true
+collision_layer = 17
+collision_mask = 17
+size = Vector3(39.791138, 10.265026, 3.8598938)
+
+[node name="Character" parent="." instance=ExtResource("2_6k0dg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.077394485, 0, -0.15494204)
+
+[node name="Camera_Pivot" type="Node3D" parent="." node_paths=PackedStringArray("targetNode")]
+transform = Transform3D(1, 0, 0, 0, 0.64278764, 0.76604444, 0, -0.76604444, 0.64278764, 0, 0.865, 0)
+script = ExtResource("3_6k0dg")
+targetNode = NodePath("../Character")
+
+[node name="Camera3D" type="Camera3D" parent="Camera_Pivot" groups=["Camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 45.945)
+cull_mask = 1048559
+doppler_tracking = 2
+fov = 45.0
+
+[node name="character2" parent="." instance=ExtResource("4_5j64k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.801016, 0.00092697144, 4.540574)
+
+[node name="character3" parent="." instance=ExtResource("4_5j64k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.554159, 0.00092703104, -2.1880906)
+
+[node name="character4" parent="." instance=ExtResource("4_5j64k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.120378494, 0.00092720985, -5.6309824)
+
+[node name="FogOfWar" parent="." node_paths=PackedStringArray("target_body", "target_camera") instance=ExtResource("6_7ag2b")]
+target_body = NodePath("../Character")
+target_camera = NodePath("../Camera_Pivot/Camera3D")

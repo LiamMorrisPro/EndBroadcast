@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dd3mcy7tc7vhn"
+path="res://.godot/imported/Misc Futuristic 005.wav-edb9e0cc24e728adb45b039ff17f636b.sample"
+
+[deps]
+
+source_file="res://sounds/futuristic/Misc Futuristic 005.wav"
+dest_files=["res://.godot/imported/Misc Futuristic 005.wav-edb9e0cc24e728adb45b039ff17f636b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

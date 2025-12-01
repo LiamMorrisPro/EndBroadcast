@@ -1,0 +1,367 @@
+[gd_scene load_steps=11 format=3 uid="uid://bvjdxdb57bs64"]
+
+[ext_resource type="Script" uid="uid://drd4rf8h1orqi" path="res://UI/main_menu.gd" id="1_p8ccj"]
+[ext_resource type="Texture2D" uid="uid://cocg1df1u82vc" path="res://_imports/IMG_1447.PNG" id="2_k0a0m"]
+[ext_resource type="PackedScene" uid="uid://dc1l1dr1oamaa" path="res://UI/ButtonTemplate.tscn" id="2_tk8dj"]
+[ext_resource type="Texture2D" uid="uid://bfwccuvb3y5yx" path="res://_imports/icons/Gear.png" id="3_d8nwk"]
+[ext_resource type="Theme" uid="uid://dpe8b54q7igw" path="res://UI/styles/ButtonStyle/MenuTheme.tres" id="4_4cwpn"]
+[ext_resource type="Texture2D" uid="uid://b5iy712rsrxsy" path="res://_imports/icons/Plus.png" id="5_f40uw"]
+[ext_resource type="AudioStream" uid="uid://n847y6r4yo77" path="res://sounds/Music/Electronic Vol8 Back To Back Intensity 1.wav" id="6_8ctay"]
+[ext_resource type="Texture2D" uid="uid://7e1c5fuhq505" path="res://_imports/icons/Speaker-0.png" id="6_ev3b6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0a0m"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2mudq"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0, 0.7287422, 0.7705808, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 6
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_p8ccj")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_k0a0m")
+
+[node name="MenuButtons" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
+
+[node name="StartButton" parent="MenuButtons" instance=ExtResource("2_tk8dj")]
+layout_mode = 0
+anchors_preset = 0
+anchor_top = 0.0
+anchor_bottom = 0.0
+offset_left = 64.0
+offset_top = -280.0
+offset_right = 538.0
+offset_bottom = -176.00018
+grow_vertical = 1
+
+[node name="Credits" parent="MenuButtons" instance=ExtResource("2_tk8dj")]
+layout_mode = 1
+offset_left = 64.0
+offset_top = -160.0
+offset_right = 408.0
+offset_bottom = -56.000183
+text = "Credits"
+
+[node name="Settings" parent="MenuButtons" instance=ExtResource("2_tk8dj")]
+texture_filter = 1
+layout_mode = 1
+offset_left = 424.0
+offset_top = -160.0
+offset_right = 536.0
+offset_bottom = -56.000183
+text = ""
+icon_alignment = 1
+expand_icon = true
+
+[node name="TextureRect" type="TextureRect" parent="MenuButtons/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = -15.999817
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_d8nwk")
+
+[node name="Quit" parent="MenuButtons" instance=ExtResource("2_tk8dj")]
+layout_mode = 1
+offset_left = 1672.0
+offset_top = -160.0
+offset_right = 1858.0
+offset_bottom = -56.000183
+text = "Quit"
+
+[node name="Settings" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="Panel" parent="Settings"]
+self_modulate = Color(0.09239707, 0.09239706, 0.09239706, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -292.0
+offset_right = 320.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4cwpn")
+
+[node name="Close" parent="Settings/ColorRect" instance=ExtResource("2_tk8dj")]
+texture_filter = 1
+layout_mode = 1
+offset_left = 32.0
+offset_top = -624.0
+offset_right = 122.0
+offset_bottom = -534.0
+rotation = -0.7853982
+pivot_offset = Vector2(45, 45)
+text = ""
+icon = ExtResource("5_f40uw")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Settings/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Control" type="Control" parent="Settings/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="Settings/ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -229.0
+offset_right = 120.0
+offset_bottom = -179.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Music"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider" type="HSlider" parent="Settings/ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 120.0
+offset_top = -216.0
+offset_right = -136.0
+offset_bottom = -112.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("6_ev3b6")
+theme_override_icons/grabber_highlight = ExtResource("6_ev3b6")
+theme_override_styles/slider = SubResource("StyleBoxFlat_k0a0m")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_2mudq")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_2mudq")
+max_value = 2.0
+step = 0.1
+value = 1.0
+ticks_position = 3
+
+[node name="Label2" type="Label" parent="Settings/ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.0
+offset_top = -80.0
+offset_right = 120.0
+offset_bottom = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "Sound Effects"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSlider2" type="HSlider" parent="Settings/ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 120.0
+offset_top = -67.0
+offset_right = -136.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+theme_override_icons/grabber = ExtResource("6_ev3b6")
+theme_override_styles/slider = SubResource("StyleBoxFlat_k0a0m")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_2mudq")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_2mudq")
+max_value = 2.0
+step = 0.1
+value = 1.0
+ticks_position = 3
+
+[node name="Credits" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="Panel" parent="Credits"]
+self_modulate = Color(0.09239707, 0.09239706, 0.09239706, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = -292.0
+offset_right = 320.0
+offset_bottom = 356.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4cwpn")
+
+[node name="Close" parent="Credits/ColorRect" instance=ExtResource("2_tk8dj")]
+texture_filter = 1
+layout_mode = 1
+offset_left = 32.0
+offset_top = -624.0
+offset_right = 122.0
+offset_bottom = -534.0
+rotation = -0.7853982
+pivot_offset = Vector2(45, 45)
+text = ""
+icon = ExtResource("5_f40uw")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="Credits/ColorRect"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 112.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 46
+text = "Credits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="Panel" parent="Credits/ColorRect"]
+self_modulate = Color(0.0142752165, 0.014275218, 0.014275218, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = 136.0
+offset_right = -64.0
+offset_bottom = -64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_4cwpn")
+
+[node name="Label" type="Label" parent="Credits/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 31
+text = "A project by 
+Liam Morris (Strigzzz)
+
+Asset packs
+- - - - - - - - - - - - - - - - - - - -"
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Credits/ColorRect/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 216.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 21
+text = "
+Lucid icons created by Midhil [Leo Red]
+SFX - Ovani Sound"
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_8ctay")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+
+[connection signal="value_changed" from="Settings/ColorRect/Control/HSlider" to="." method="_music_value_changed"]
+[connection signal="value_changed" from="Settings/ColorRect/Control/HSlider2" to="." method="_SFX_value_changed"]

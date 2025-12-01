@@ -1,0 +1,58 @@
+[gd_scene load_steps=8 format=3 uid="uid://kispl8j6uabq"]
+
+[ext_resource type="Script" uid="uid://dr4o0n1x4sqx3" path="res://objects/Bullet/friendly_bullet/bullet.gd" id="1_2feau"]
+[ext_resource type="PackedScene" uid="uid://drqqjwcgk80f7" path="res://objects/damage_area.tscn" id="2_2sihv"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m50fk"]
+radius = 0.547
+height = 2.045
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fxku7"]
+cull_mode = 1
+specular_mode = 2
+albedo_color = Color(2.8878452e-07, 0.47535104, 0.6099075, 1)
+emission_enabled = true
+emission = Color(4.3317675e-07, 0.37172893, 0.6021881, 1)
+emission_energy_multiplier = 7.09
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fxku7"]
+radius = 0.326
+height = 2.092
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ucuad"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 1.5
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_fxku7"]
+radius = 0.796875
+height = 1.9804688
+
+[node name="Bullet" type="Node3D"]
+process_priority = -1
+process_physics_priority = -1
+physics_interpolation_mode = 2
+top_level = true
+script = ExtResource("1_2feau")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_m50fk")
+surface_material_override/0 = SubResource("StandardMaterial3D_fxku7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.665, 0, 0, 0, -2.9068074e-08, -0.665, 0, 0.665, -2.9068074e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_fxku7")
+surface_material_override/0 = SubResource("StandardMaterial3D_ucuad")
+
+[node name="Lifetime" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="DamageArea" parent="." instance=ExtResource("2_2sihv")]
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageArea"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -2.989512e-10, -0.0068382616)
+shape = SubResource("CapsuleShape3D_fxku7")
+
+[connection signal="timeout" from="Lifetime" to="." method="_on_lifetime_timeout"]

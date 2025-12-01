@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=4 uid="uid://iekhqmf6s21l"]
+
+[ext_resource type="Shader" uid="uid://yh766ji2fv2o" path="res://shaders/grass.gdshader" id="1_yceqn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14n12"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8rsrr"]
+_surfaces = [{
+"aabb": AABB(-0.20794056, -0.12048827, -0.50666445, 0.388993, 0.33073696, 0.50666445),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwAAAAIAAwACAAQABQADAAQABgAHAAgACQAGAAgACQAIAAoACwAJAAoADAANAA4ADwANAAwADwAQAA0AEQAQAA8AEgATABQAFQASABQAFQAUABYAFwAVABYAGAAZABoAGwAZABgAGwAcABkAHQAcABsAHgAfACAAIQAeACAAIQAgACIAIwAhACIA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 36,
+"vertex_data": PackedByteArray("9HxVPwFAAADYiAAAAAAAALyUVT8BQAAAKX22WgCgAACHlLZaAKAAANiIQl3//wAAcUBXsRhGAAAAAJC4ZQAAAOA5dpYYRgAAvGfRoxihAABJYWaJGKEAADt5m4///wAAy9MUzZRDAABd3P6ylEMAAP//L9L/BAAAnLZsv5ugAAAJv8mlm6AAACarnav//wAAH0oQdxFUAABFI5tcaw0AAClQBFwRVAAAF2CafQCgAAAGZgRjAKAAAMtpZHL//wAAv9TCbZRDAADexgxXlEMAAI7wB0X/BAAAELsFg5ugAABsrbNsm6AAALGmeIP//wAARY0ZygFAAACWbv//AAAAAB936r8BQAAAjpWDsACgAADKf4GmAKAAAHaLI6n//wAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_8ew5d"]
+resource_name = "grasstest_Plane_003"
+_surfaces = [{
+"aabb": AABB(-0.20794056, -0.12048827, -0.50666445, 0.388993, 0.33073696, 0.50666445),
+"attribute_data": PackedByteArray("AABVVQAAAAD//1RV/////wAAqqr//6mqAACqqv//VFX//6mqAABVVQAAVVUAAAAA//9UVf////8AAKqq//+pqgAAqqr//1RV//+pqgAAVVUAAFVV//9UVQAAAAD///////+pqgAAqqoAAKqq//9UVQAAVVX//6mqAABVVQAAAAD//1RV/////wAAqqr//6mqAACqqv//VFX//6mqAABVVQAAVVX//1RVAAAAAP///////6mqAACqqgAAqqr//1RVAABVVf//qaoAAFVVAAAAAP//VFX/////AACqqv//qaoAAKqq//9UVf//qaoAAFVV"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AAABAAIAAwAEAAUABgAHAAgABgAJAAcACgALAAwADQAOAA8AEAARABIAEAATABEAFAAVABYAFwAYABkAGgAbABwAGgAdABsAHgAfACAAIQAiACMAJAAlACYAJAAnACUAKAApACoAKwAsAC0ALgAvADAALgAxAC8AMgAzADQANQA2ADcAOAA5ADoAOAA7ADkA"),
+"material": SubResource("StandardMaterial3D_14n12"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 60,
+"vertex_data": PackedByteArray("9HxVPwFAavnYiAAAAABd+byUVT8BQGr52IhCXf//x/cpfbZaAKDH94eUtloAoMf3KX22WgCgDfi8lFU/AUAG+IeUtloAoA349HxVPwFABvhxQFexGEby/wAAkLhlAOr/4Dl2lhhG7f87eZuP//82/rxn0aMYoTL+SWFmiRihOP68Z9GjGKEA/+A5dpYYRgf/SWFmiRihBv9xQFexGEYC/8vTFM2UQ6YBXdz+spRDqgH//y/S/wSjASarnav//yQACb/JpZugIQCctmy/m6AjAJy2bL+boEgAXdz+spRDaQDL0xTNlENmAAm/yaWboGoAH0oQdxFUm/hFI5tcaw2Q+ClQBFwRVJf4y2lkcv//TvkXYJp9AKBO+QZmBGMAoEv5F2CafQCg3/gpUARcEVTY+AZmBGMAoNz4H0oQdxFU2/i/1MJtlEP8Ad7GDFeUQwICjvAHRf8E/AGxpniD//9aAGyts2yboFcAELsFg5ugXAAQuwWDm6A2AN7GDFeUQ28Av9TCbZRDawBsrbNsm6BwAEWNGcoBQEz7lm7//wAARvsfd+q/AUA9+3aLI6n//2D+jpWDsACgY/7Kf4GmAKBc/o6Vg7AAoFX9H3fqvwFATv3Kf4GmAKBQ/UWNGcoBQFX9j//QhY7/1IWO/9qF+f86gPn/N4D4/0KAzv8egs3/KYLN/ymCzv8ggkK5KjU+uS01RLkoNaVJIcilSSHIp0keyAdKrMcISqvHCUqqxwdKrcdyzDhLdMw1S3XMNEvTM2e00zNntNEzarTiy/hL/svZS/zL3Uv+y9pLHMd+SRrHgEkfx3xJbMWASmrFgUptxX9KJcYXSibGF0ooxhVKIsYZSoqrUyuMq1Irj6tQK1JUwtRRVMPUT1TE1E6riStaq3IrWat0K1qrcitxk9EacJPeGnOT0Bq5kr0cuJK+HLmSvhztkmQc7JJqHO2SZRzskmsc")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_8rsrr")
+
+[sub_resource type="Gradient" id="Gradient_x4fwp"]
+colors = PackedColorArray(0, 0, 0, 1, 0.42764658, 0.24770427, 9.62615e-08, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bp5m6"]
+gradient = SubResource("Gradient_x4fwp")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gy3dk"]
+fractal_octaves = 1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_s8evi"]
+noise = SubResource("FastNoiseLite_gy3dk")
+seamless = true
+seamless_blend_skirt = 0.682
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1fuju"]
+render_priority = 0
+shader = ExtResource("1_yceqn")
+shader_parameter/wind_speed = 0.075
+shader_parameter/wind_strength = 0.305
+shader_parameter/wind_texture_tile_size = 73.545
+shader_parameter/wind_vertical_strength = 0.015
+shader_parameter/wind_horizontal_direction = Vector2(1, 0.5)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_bp5m6")
+shader_parameter/wind_noise = SubResource("NoiseTexture2D_s8evi")
+shader_parameter/enable_fade = false
+shader_parameter/fade_start_distance = 50.0
+shader_parameter/fade_length = 20.0
+
+[node name="grass" type="Node3D"]
+
+[node name="Plane_003" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.025958948, 0, -0.048392635)
+mesh = SubResource("ArrayMesh_8ew5d")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_1fuju")
