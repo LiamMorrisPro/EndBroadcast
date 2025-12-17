@@ -730,7 +730,7 @@ offset_bottom = -136.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 36
-text = "You've infiltrated the broadcast staion, great work, now we need to destroy that broadcast tower.
+text = "You've infiltrated the broadcast station, great work, now we need to destroy that broadcast tower.
 
 Be careful, the place is swarming with drones, they'll call for help the moment they see you."
 autowrap_mode = 2

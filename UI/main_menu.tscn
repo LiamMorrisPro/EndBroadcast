@@ -339,7 +339,7 @@ theme_override_font_sizes/font_size = 31
 text = "A project by 
 Liam Morris (Strigzzz)
 
-Asset packs
+Assets
 - - - - - - - - - - - - - - - - - - - -"
 horizontal_alignment = 1
 
@@ -354,7 +354,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 21
 text = "
 Lucid icons created by Midhil [Leo Red]
-SFX - Ovani Sound"
+PixelKeyboardKeys - DreamMix
+SFX - Ovani Sound
+Music - Ovani Sound"
 horizontal_alignment = 1
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
